@@ -1,0 +1,36 @@
+<div class="container mt-4">
+    <h1 class="mb-4">Images</h1>
+    <div class="view-switch mb-4">
+        <button class="btn btn-outline-primary mr-2" (click)="switchView('cards')">
+            <i class="fas fa-th-large"></i> Cards View
+        </button>
+        <button class="btn btn-outline-primary" (click)="switchView('table')">
+            <i class="fas fa-table"></i> Table View
+        </button>
+    </div>
+
+    <!-- Spinner -->
+    <div *ngIf="isLoading">
+        <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+    </div>
+
+    <div *ngIf="viewMode === 'table'">
+        <ul class="list-group">
+            <a *ngFor="let image of images; let i = index"  [routerLink]="['/image', image.id]" class="list-group-item list-group-item-action mb-2" [@slideInLeft]="{ value: '', params: { delay: i * 200 } }">
+                {{ image.id }} - {{ image.author }}
+            </a>
+        </ul>
+    </div>
+    <div *ngIf="viewMode === 'cards'">
+        <div class="row">
+            <div class="col-lg-3 col-sm-6 mb-4" *ngFor="let image of images; let i = index">
+                <div class="card">
+                    <img src="{{image.download_url}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <a [routerLink]="['/image', image.id]" class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

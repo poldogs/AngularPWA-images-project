@@ -1,0 +1,31 @@
+
+
+<div class="container mt-5">
+    <div *ngIf="image" class="row animate__animated animate__bounce animate__fadeIn">
+        <div class="col-md-9">
+            <h1>{{image.author}}</h1>
+            <img style="width: auto; height: 400px;" class="rounded" src="{{image.download_url}}" alt="">
+            <button class="btn btn-outline-primary m-2" (click)="showDetails = !showDetails">
+                <i class="fa fa-plus"></i>
+                Show details
+            </button>
+            <div *ngIf="showDetails">
+                <mat-tab-group>
+                    <mat-tab label="Identifier">
+                      <p><strong>Identifier:</strong> {{image.id}}</p>
+                    </mat-tab>
+                    <mat-tab label="Size">
+                      <p><strong>Size:</strong> {{image.width}} - {{image.height}}</p>
+                    </mat-tab>
+                    <mat-tab label="Url">
+                      <p><strong>Url:</strong> {{image.url}}</p>
+                    </mat-tab>
+                </mat-tab-group>
+            </div>
+        </div>
+
+        <div class="col md-3">
+            <a routerLink="/" class="btn btn-danger">Back</a>
+        </div>
+    </div>
+</div>
