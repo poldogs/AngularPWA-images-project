@@ -32,19 +32,6 @@
     }
   ],
   "dataGroups": [
-    <<<<<
-    {
-      "name": "api-freshness",
-      "urls": [
-        "https://api.github.com/**"
-      ],
-      "cacheConfig": {
-        "strategy": "freshness",
-        "maxSize": 100,
-        "maxAge": "3d",
-        "timeout": "10s"
-      }
-    },
     {
       "name": "images-api",
       "urls": [
